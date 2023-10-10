@@ -6,23 +6,6 @@
  */
 
 $(document).ready(function() {
-  let currentSlide = 0;
-  const slides = document.querySelectorAll("#carousel .slide");
-  const totalSlides = slides.length;
-  const nextButton = document.querySelector(".carousel-control-next");
-  const prevButton = document.querySelector(".carousel-control-prev");
-  
-  nextButton.addEventListener("click", function() {
-      slides[currentSlide].classList.remove("active");  // Assuming "active" class displays the slide
-      currentSlide = (currentSlide + 1) % totalSlides;
-      slides[currentSlide].classList.add("active");
-  });
-  
-  prevButton.addEventListener("click", function() {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      slides[currentSlide].classList.add("active");
-  });
   // get all slides
   var $slides = $('.slide');
   var slideCount = $slides.length;
