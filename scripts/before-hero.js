@@ -22,23 +22,31 @@ $(document).ready(function() {
   var nextIcon = $('<img>').attr({
     'src': 'images/8675309-arrow-right.png'
   });
+// ... the rest of your code ...
+
   var prevButton = $('<div>')
     .addClass('btn-prev')
-    .on('click',function() {
-      currentIndex = updateIndex(currentIndex,'prev',slideCount);
-      showSlide(currentIndex);
+    .attr('tabindex', '0') // to make the element focusable
+    .on('click keydown', function(event) {
+      if (event.type === 'click' || event.key === 'Enter' || event.key === ' ') {
+        currentIndex = updateIndex(currentIndex,'prev',slideCount);
+        showSlide(currentIndex);
+        event.preventDefault(); // to prevent default action of space or enter
+      }
     })
     .html(prevIcon);
+
   var nextButton = $('<div>')
     .addClass('btn-next')
-    .on('click',function() {
-      currentIndex = updateIndex(currentIndex,'next',slideCount);
-      showSlide(currentIndex);
+    .attr('tabindex', '0') // to make the element focusable
+    .on('click keydown', function(event) {
+      if (event.type === 'click' || event.key === 'Enter' || event.key === ' ') {
+        currentIndex = updateIndex(currentIndex,'next',slideCount);
+        showSlide(currentIndex);
+        event.preventDefault(); // to prevent default action of space or enter
+      }
     })
     .html(nextIcon);
-
-  navButtons.append(prevButton,nextButton);
-  $('#carousel').append(navButtons);
 
   // add slide indicators (lentils)
   var lentils = $('<ul>').addClass('lentils');
