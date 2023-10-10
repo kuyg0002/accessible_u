@@ -38,7 +38,6 @@ $(document).ready(function() {
 
   navButtons.append(prevButton,nextButton);
   $('#carousel').append(navButtons);
-// ... the rest of your code ...
 
 var prevButton = $('<div>')
     .addClass('btn-prev')
@@ -51,7 +50,24 @@ var prevButton = $('<div>')
       }
     })
     .html(prevIcon);
-
+    let currentSlide = 0;
+    const slides = document.querySelectorAll("#carousel .slide");
+    const totalSlides = slides.length;
+    const nextButton = document.querySelector(".carousel-control-next");
+    const prevButton = document.querySelector(".carousel-control-prev");
+    
+    nextButton.addEventListener("click", function() {
+        slides[currentSlide].classList.remove("active");  // Assuming "active" class displays the slide
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slides[currentSlide].classList.add("active");
+    });
+    
+    prevButton.addEventListener("click", function() {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add("active");
+    });
+    
 var nextButton = $('<div>')
     .addClass('btn-next')
     .attr('tabindex', '0') // to make the element focusable
@@ -64,9 +80,7 @@ var nextButton = $('<div>')
     })
     .html(nextIcon);
 
-// ... the rest of your code ...
-
-  // add slide indicators (lentils)
+ // add slide indicators (lentils)
   var lentils = $('<ul>').addClass('lentils');
   for (var i=0; i<slideCount; i++) {
     var lentil = $('<li>')
