@@ -39,6 +39,33 @@ $(document).ready(function() {
 
   navButtons.append(prevButton,nextButton);
   $('#carousel').append(navButtons);
+// ... the rest of your code ...
+
+var prevButton = $('<div>')
+    .addClass('btn-prev')
+    .attr('tabindex', '0') // to make the element focusable
+    .on('click keydown', function(event) {
+      if (event.type === 'click' || event.key === 'Enter' || event.key === ' ') {
+        currentIndex = updateIndex(currentIndex,'prev',slideCount);
+        showSlide(currentIndex);
+        event.preventDefault(); // to prevent default action of space or enter
+      }
+    })
+    .html(prevIcon);
+
+var nextButton = $('<div>')
+    .addClass('btn-next')
+    .attr('tabindex', '0') // to make the element focusable
+    .on('click keydown', function(event) {
+      if (event.type === 'click' || event.key === 'Enter' || event.key === ' ') {
+        currentIndex = updateIndex(currentIndex,'next',slideCount);
+        showSlide(currentIndex);
+        event.preventDefault(); // to prevent default action of space or enter
+      }
+    })
+    .html(nextIcon);
+
+// ... the rest of your code ...
 
   // add slide indicators (lentils)
   var lentils = $('<ul>').addClass('lentils');
