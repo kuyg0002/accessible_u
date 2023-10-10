@@ -39,7 +39,7 @@ $(document).ready(function() {
   navButtons.append(prevButton,nextButton);
   $('#carousel').append(navButtons);
 
-var prevButton = $('<div>')
+  var prevButton = $('<div>')
     .addClass('btn-prev')
     .attr('tabindex', '0') // to make the element focusable
     .on('click keydown', function(event) {
