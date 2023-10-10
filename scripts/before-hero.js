@@ -67,35 +67,6 @@ var prevButton = $('<div>')
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         slides[currentSlide].classList.add("active");
     });
-    
-var nextButton = $('<div>')
-    .addClass('btn-next')
-    .attr('tabindex', '0') // to make the element focusable
-    .on('click keydown', function(event) {
-      if (event.type === 'click' || event.key === 'Enter' || event.key === ' ') {
-        currentIndex = updateIndex(currentIndex,'next',slideCount);
-        showSlide(currentIndex);
-        event.preventDefault(); // to prevent default action of space or enter
-      }
-    })
-    .html(nextIcon);
-
- // add slide indicators (lentils)
-  var lentils = $('<ul>').addClass('lentils');
-  for (var i=0; i<slideCount; i++) {
-    var lentil = $('<li>')
-      .attr('data-slide',i)
-      .on('click',function() {
-        showSlide($(this).data('slide'));
-      });
-    lentils.append(lentil);
-  }
-  $('#carousel').append(lentils);
-
-  // show the first one
-  showSlide(0);
-});
-
 function showSlide(index) {
 
   // hide the current visible slide
